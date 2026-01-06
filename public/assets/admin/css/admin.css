@@ -1,0 +1,423 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.admin-body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.logo {
+    font-weight: 600;
+}
+
+.header a.logout {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background: #1e293b;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover {
+    background: #334155;
+    color: #ffffff;
+}
+
+/* =========================
+   SIDEBAR FULL COLLAPSE FIX
+========================= */
+
+/* Hide text when collapsed */
+body.sidebar-collapsed .sidebar-menu li a {
+    justify-content: center;
+    padding: 12px 0;
+    font-size: 0; /* hides text */
+}
+
+/* Optional: keep icons size if you add icons later */
+body.sidebar-collapsed .sidebar-menu li a::before {
+    font-size: 16px;
+}
+
+/* Hide logo text */
+body.sidebar-collapsed .logo {
+    display: none;
+}
+
+/* Center menu toggle */
+body.sidebar-collapsed .menu-toggle {
+    margin: 0 auto;
+}
+
+/* Smooth animation */
+.sidebar,
+.page-wrapper {
+    transition: all 0.3s ease;
+}
+
+
+/* =========================
+   PAGE WRAPPER
+========================= */
+.page-wrapper {
+    margin-top: 60px;
+    margin-left: 220px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+body.sidebar-collapsed .page-wrapper {
+    margin-left: 60px;
+}
+
+.content {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #64748b;
+    text-align: center;
+}
+
+
+/* =========================
+   PAGE HEADER (PLANS)
+========================= */
+.plans-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.plans-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* =========================
+   PLANS TABLE
+========================= */
+.plans-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.plans-table thead {
+    background: #f8fafc;
+}
+
+.plans-table th,
+.plans-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.plans-table th {
+    font-weight: 600;
+    color: #374151;
+}
+
+.plans-table tr:hover {
+    background: #f9fafb;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.badge {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge.open {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge.full {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge.draft {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.badge.completed {
+    background: #dbeafe;
+    color: #1e3a8a;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: #ffffff;
+}
+
+.btn-edit {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+.btn-delete {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.btn-view {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* =========================
+   SIDE PANEL (ADD / EDIT PLAN)
+========================= */
+.side-panel {
+    position: fixed;
+    top: 60px; /* header height */
+    right: -420px;
+    width: 400px;
+    height: calc(100vh - 60px);
+    background: #ffffff;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1001;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.side-panel.open {
+    right: 0;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.panel-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* =========================
+   PANEL OVERLAY
+========================= */
+.panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 1000;
+}
+
+.panel-overlay.show {
+    display: block;
+}
+
+/* =========================
+   FORM STYLES
+========================= */
+form label {
+    display: block;
+    margin: 12px 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* =========================
+   FORM ERROR
+========================= */
+.form-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+/* ===== GLOBAL ADMIN LAYOUT FIX ===== */
+
+body.admin-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+}
+
+/* HEADER */
+.header {
+    height: 60px;
+    background: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #111827;
+    color: #ffffff;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+}
+
+/* PAGE WRAPPER */
+.page-wrapper {
+    margin-top: 60px;
+    margin-left: 220px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* SIDEBAR COLLAPSE */
+body.sidebar-collapsed .sidebar {
+    width: 60px;
+}
+
+body.sidebar-collapsed .page-wrapper {
+    margin-left: 60px;
+}
+
+/* CONTENT */
+.content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
